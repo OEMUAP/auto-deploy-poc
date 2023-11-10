@@ -18,6 +18,9 @@ jobs:
 
     - name: List local Docker images
       run: docker images
+    
+    - name: List local Docker container
+      run: docker ps
 
     - name: Build and push Docker image to local registry
       env:

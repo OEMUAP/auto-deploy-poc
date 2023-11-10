@@ -22,6 +22,9 @@ jobs:
     - name: List local Docker container
       run: docker ps
 
+    - name: Login to Docker Registry
+      run: docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }} localhost:5001
+
     - name: Build and push Docker image to local registry
       env:
         DOCKER_REGISTRY: localhost:5001

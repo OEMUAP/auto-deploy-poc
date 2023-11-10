@@ -50,4 +50,4 @@ app.listen(port, () => {
 });
 
 //created docker image tab in registory
-// docker tag nodejs-crud localhost:5000/nodejs-crud
+// docker tag nodejs-crud localhost:5000/nodejs-crud     

@@ -48,3 +48,6 @@ app.delete('/items/:id', (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+//created docker image tab in registory
+// docker tag nodejs-crud localhost:5000/nodejs-crud

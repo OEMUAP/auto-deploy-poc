@@ -24,9 +24,9 @@ jobs:
 
     - name: Build and push Docker image to local registry
       env:
-        DOCKER_REGISTRY: localhost:5000
-        IMAGE_NAME: nodejs-crud
-        TAG: latest
+        DOCKER_REGISTRY: localhost:5001
+        IMAGE_NAME: register
+        TAG: 2
       run: |
         docker buildx create --use
         docker buildx inspect

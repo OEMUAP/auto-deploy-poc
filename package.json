@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker:build": "docker build -t nodejs-crud .",
+    "docker:run": "docker run -dp 127.0.0.1:3000:3000 nodejs-crud"
   },
   "keywords": [],
   "author": "",

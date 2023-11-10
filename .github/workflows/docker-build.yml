@@ -23,7 +23,10 @@ jobs:
       run: docker ps
 
     - name: Login to Docker Registry
-      run: docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }} localhost:5001
+      run: docker login -u myusername -p mypassword localhost:5001
+
+    - name: List local Docker images
+      run: docker images
 
     - name: Build and push Docker image to local registry
       env:

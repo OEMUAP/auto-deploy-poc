@@ -22,8 +22,8 @@ jobs:
     - name: List local Docker container
       run: docker ps
 
-    - name: Login to Docker Registry
-      run: docker login -u myusername -p mypassword localhost:5001
+    # - name: Login to Docker Registry
+    #   run: docker login -u myusername -p mypassword localhost:5001
 
     - name: List local Docker images
       run: docker images

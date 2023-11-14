@@ -1,13 +1,19 @@
+// Require and configure dotenv
+require('dotenv').config();
 // index.js
 const express = require('express');
+const packageJson = require('./package.json');
 const app = express();
-const port = 5001;
+const PORT = process.env.PORT;
 
 app.use(express.json());
-
+const packageDetail = {
+  projectName: packageJson.name,
+  version: packageJson.version
+}
 let data = [
-  { id: 1, name: 'Item 1' },
-  { id: 2, name: 'Item 2' },
+  { id: 1, name: 'Item 1', ...packageDetail },
+  { id: 2, name: 'Item 2', ...packageDetail },
 ];
 
 // Get all items
@@ -45,8 +51,8 @@ app.delete('/items/:id', (req, res) => {
   res.json({ message: 'Item deleted successfully' });
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on PORT ${PORT}`);
 });
 
 //created docker image tab in registory

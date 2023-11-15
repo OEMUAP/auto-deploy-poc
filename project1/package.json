@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node index.js",
     "docker:build": "docker build -t nodejs-crud-project-1 .",
-    "docker:run": "docker run -dp 127.0.0.1:5001:$PORT nodejs-crud-project-1"
+    "docker:run": "docker run -dp 5001:5001 nodejs-crud-project-1"
   },
   "keywords": [],
   "author": "",

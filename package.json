@@ -2,6 +2,7 @@
   "name": "nodejs-crud",
   "version": "1.1.0",
   "description": "",
+  "private": true,
   "main": "index.js",
   "workspaces": [
     "project1/*",

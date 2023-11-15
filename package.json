@@ -5,8 +5,8 @@
   "private": true,
   "main": "index.js",
   "workspaces": [
-    "project1/*",
-    "project2/*"
+    "project1/",
+    "project2/"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

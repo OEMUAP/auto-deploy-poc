@@ -6,35 +6,30 @@ on:
       - main
 
 jobs:
-  build:
+  build_and_run_project_1:
+    name: Build and Run Project 1
     runs-on: self-hosted
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+    - name: Build and run Docker for Project 1
+        run: |
+          cd project1
+          docker build -t nodejs-crud-project-1 .
+          docker run -dp 5001:5001 nodejs-crud-project-1
 
-    - name: List local Docker images
-      run: docker images
-    
-    - name: List local Docker container
-      run: docker ps
+  build_and_run_project_2:
+    name: Build and Run Project 2
+    runs-on: self-hosted
 
-    # - name: Login to Docker Registry
-    #   run: docker login -u myusername -p mypassword localhost:5001
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-    - name: List local Docker images
-      run: docker images
-
-    - name: Build and push Docker image to local registry
-      env:
-        DOCKER_REGISTRY: localhost:5001
-        IMAGE_NAME: register
-        TAG: 2
-      run: |
-        docker buildx create --use
-        docker buildx inspect
-        docker buildx build -t $DOCKER_REGISTRY/$IMAGE_NAME:$TAG --platform linux/amd64,linux/arm64 .
-        docker push $DOCKER_REGISTRY/$IMAGE_NAME:$TAG
+    - name: Build and run Docker for Project 2
+        run: |
+          cd project2
+          docker build -t nodejs-crud-project-2 .
+          docker run -dp 4001:4001 nodejs-crud-project-2

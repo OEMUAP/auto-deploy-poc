@@ -19,13 +19,14 @@ jobs:
 
     - name: Check running containers on port
       run: |
-        CONTAINER_ID=$(docker ps -q --filter "publish=5001")
-        if [ -n "$CONTAINER_ID" ]; then
-          echo "Found container running on port 5001 with ID: $CONTAINER_ID"
+        $CONTAINER_ID = docker ps -q --filter "publish=5001"
+        if ($CONTAINER_ID) {
+          Write-Output "Found container running on port 5001 with ID: $CONTAINER_ID"
           docker stop $CONTAINER_ID
-        else
-          echo "No container found running on port 5001"
-        fi
+        }
+        else {
+          Write-Output "No container found running on port 5001"
+        }
 
     - name: Build and run Docker for Project 1
       run: |
@@ -43,13 +44,14 @@ jobs:
 
     - name: Check running containers on port
       run: |
-        CONTAINER_ID=$(docker ps -q --filter "publish=4001")
-        if [ -n "$CONTAINER_ID" ]; then
-          echo "Found container running on port 4001 with ID: $CONTAINER_ID"
+        $CONTAINER_ID = docker ps -q --filter "publish=4001"
+        if ($CONTAINER_ID) {
+          Write-Output "Found container running on port 4001 with ID: $CONTAINER_ID"
           docker stop $CONTAINER_ID
-        else
-          echo "No container found running on port 4001"
-        fi
+        }
+        else {
+          Write-Output "No container found running on port 4001"
+        }
 
     - name: Build and run Docker for Project 2
       run: |

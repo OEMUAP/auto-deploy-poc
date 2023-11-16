@@ -1,0 +1,57 @@
+name: Build and Deploy to Local Registry
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build_and_run_project_1:
+    name: Build and Run Project 1
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Check running containers on port
+      run: |
+        $CONTAINER_ID = docker ps -q --filter "publish=5005"
+        if ($CONTAINER_ID) {
+          Write-Output "Found container running on port 5005 with ID: $CONTAINER_ID"
+          docker stop $CONTAINER_ID
+        }
+        else {
+          Write-Output "No container found running on port 5005"
+        }
+
+    - name: Build and run Docker for Project 1
+      run: |
+        cd project1
+        docker build -t nodejs-crud-project-1 .
+        docker run -dp 5005:5005 nodejs-crud-project-1
+
+  build_and_run_project_2:
+    name: Build and Run Project 2
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Check running containers on port
+      run: |
+        $CONTAINER_ID = docker ps -q --filter "publish=4005"
+        if ($CONTAINER_ID) {
+          Write-Output "Found container running on port 4005 with ID: $CONTAINER_ID"
+          docker stop $CONTAINER_ID
+        }
+        else {
+          Write-Output "No container found running on port 4005"
+        }
+
+    - name: Build and run Docker for Project 2
+      run: |
+        cd project2
+        docker build -t nodejs-crud-project-2 .
+        docker run -dp 4005:4005 nodejs-crud-project-2

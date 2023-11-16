@@ -28,8 +28,8 @@ jobs:
     - name: Build and run Docker for Project 1
       run: |
         cd project1
-        docker build -t nodejs-crud-project-1 .
-        docker run -dp 5001:5001 --name prod-project-1 nodejs-crud-project-1
+        docker build -t nodejs-crud-prod-project-1 .
+        docker run -dp 5001:5001 --name prod-project-1 nodejs-crud-prod-project-1
 
   build_and_run_project_2:
     name: Build and Run Project 2
@@ -53,5 +53,5 @@ jobs:
     - name: Build and run Docker for Project 2
       run: |
         cd project2
-        docker build -t nodejs-crud-project-2 .
-        docker run -dp 4001:4001 --name prod-project-2 nodejs-crud-project-2
+        docker build -t nodejs-crud-prod-project-2 .
+        docker run -dp 4001:4001 --name prod-project-2 nodejs-crud-prod-project-2

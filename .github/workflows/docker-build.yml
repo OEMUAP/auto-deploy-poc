@@ -17,6 +17,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Check running containers on port
+      run: |
+        CONTAINER_ID=$(docker ps -q --filter "publish=5001")
+        if [ -n "$CONTAINER_ID" ]; then
+          echo "Found container running on port 5001 with ID: $CONTAINER_ID"
+          docker stop $CONTAINER_ID
+        else
+          echo "No container found running on port 5001"
+        fi
+
     - name: Build and run Docker for Project 1
       run: |
         cd project1
@@ -30,6 +40,16 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+
+    - name: Check running containers on port
+      run: |
+        CONTAINER_ID=$(docker ps -q --filter "publish=4001")
+        if [ -n "$CONTAINER_ID" ]; then
+          echo "Found container running on port 4001 with ID: $CONTAINER_ID"
+          docker stop $CONTAINER_ID
+        else
+          echo "No container found running on port 4001"
+        fi
 
     - name: Build and run Docker for Project 2
       run: |

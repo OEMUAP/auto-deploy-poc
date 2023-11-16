@@ -19,7 +19,7 @@ jobs:
         $CONTAINER_ID = docker ps -q --filter "publish=5005"
         if ($CONTAINER_ID) {
           Write-Output "Found container running on port 5005 with ID: $CONTAINER_ID"
-          docker stop $CONTAINER_ID
+          docker rm -f $CONTAINER_ID
         }
         else {
           Write-Output "No container found running on port 5005"
@@ -29,7 +29,7 @@ jobs:
       run: |
         cd project1
         docker build -t nodejs-crud-project-1 .
-        docker run -dp 5005:5005 nodejs-crud-project-1
+        docker run -dp 5005:5005 --name development nodejs-crud-project-1
 
   build_and_run_project_2:
     name: Build and Run Project 2
@@ -44,7 +44,7 @@ jobs:
         $CONTAINER_ID = docker ps -q --filter "publish=4005"
         if ($CONTAINER_ID) {
           Write-Output "Found container running on port 4005 with ID: $CONTAINER_ID"
-          docker stop $CONTAINER_ID
+          docker rm -f $CONTAINER_ID
         }
         else {
           Write-Output "No container found running on port 4005"
@@ -54,4 +54,4 @@ jobs:
       run: |
         cd project2
         docker build -t nodejs-crud-project-2 .
-        docker run -dp 4005:4005 nodejs-crud-project-2
+        docker run -dp 4005:4005 --name development nodejs-crud-project-2

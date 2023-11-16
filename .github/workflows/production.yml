@@ -19,7 +19,7 @@ jobs:
         $CONTAINER_ID = docker ps -q --filter "publish=5001"
         if ($CONTAINER_ID) {
           Write-Output "Found container running on port 5001 with ID: $CONTAINER_ID"
-          docker stop $CONTAINER_ID
+          docker rm -f $CONTAINER_ID
         }
         else {
           Write-Output "No container found running on port 5001"
@@ -29,7 +29,7 @@ jobs:
       run: |
         cd project1
         docker build -t nodejs-crud-project-1 .
-        docker run -dp 5001:5001 nodejs-crud-project-1
+        docker run -dp 5001:5001 --name production nodejs-crud-project-1
 
   build_and_run_project_2:
     name: Build and Run Project 2
@@ -44,7 +44,7 @@ jobs:
         $CONTAINER_ID = docker ps -q --filter "publish=4001"
         if ($CONTAINER_ID) {
           Write-Output "Found container running on port 4001 with ID: $CONTAINER_ID"
-          docker stop $CONTAINER_ID
+          docker rm -f $CONTAINER_ID
         }
         else {
           Write-Output "No container found running on port 4001"
@@ -54,4 +54,4 @@ jobs:
       run: |
         cd project2
         docker build -t nodejs-crud-project-2 .
-        docker run -dp 4001:4001 nodejs-crud-project-2
+        docker run -dp 4001:4001 --name production nodejs-crud-project-2

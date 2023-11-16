@@ -28,8 +28,8 @@ jobs:
     - name: Build and run Docker for Project 1
       run: |
         cd project1
-        docker build -t nodejs-crud-project-1 .
-        docker run -dp 5003:5003 --name stag-project-1 nodejs-crud-project-1
+        docker build -t nodejs-crud-stag-project-1 .
+        docker run -dp 5003:5003 --name stag-project-1 nodejs-crud-stag-project-1
 
   build_and_run_project_2:
     name: Build and Run Project 2
@@ -53,5 +53,5 @@ jobs:
     - name: Build and run Docker for Project 2
       run: |
         cd project2
-        docker build -t nodejs-crud-project-2 .
-        docker run -dp 4003:4003 --name stag-project-2 nodejs-crud-project-2
+        docker build -t nodejs-crud-stag-project-2 .
+        docker run -dp 4003:4003 --name stag-project-2 nodejs-crud-stag-project-2

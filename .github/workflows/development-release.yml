@@ -1,7 +1,7 @@
 name: Build and Deploy to Local Registry
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
@@ -16,20 +16,20 @@ jobs:
 
     - name: Check running containers on port
       run: |
-        $CONTAINER_ID = docker ps -q --filter "publish=5001"
+        $CONTAINER_ID = docker ps -q --filter "publish=5006"
         if ($CONTAINER_ID) {
-          Write-Output "Found container running on port 5001 with ID: $CONTAINER_ID"
+          Write-Output "Found container running on port 5006 with ID: $CONTAINER_ID"
           docker rm -f $CONTAINER_ID
         }
         else {
-          Write-Output "No container found running on port 5001"
+          Write-Output "No container found running on port 5006"
         }
 
     - name: Build and run Docker for Project 1
       run: |
         cd project1
         docker build -t nodejs-crud-project-1 .
-        docker run -dp 5001:5001 --name prod-project-1 nodejs-crud-project-1
+        docker run -dp 5006:5006 --name dev-release-project-1 nodejs-crud-project-1
 
   build_and_run_project_2:
     name: Build and Run Project 2
@@ -41,17 +41,17 @@ jobs:
 
     - name: Check running containers on port
       run: |
-        $CONTAINER_ID = docker ps -q --filter "publish=4001"
+        $CONTAINER_ID = docker ps -q --filter "publish=4006"
         if ($CONTAINER_ID) {
-          Write-Output "Found container running on port 4001 with ID: $CONTAINER_ID"
+          Write-Output "Found container running on port 4006 with ID: $CONTAINER_ID"
           docker rm -f $CONTAINER_ID
         }
         else {
-          Write-Output "No container found running on port 4001"
+          Write-Output "No container found running on port 4006"
         }
 
     - name: Build and run Docker for Project 2
       run: |
         cd project2
         docker build -t nodejs-crud-project-2 .
-        docker run -dp 4001:4001 --name prod-project-2 nodejs-crud-project-2
+        docker run -dp 4006:4006 --name dev-release-project-2 nodejs-crud-project-2

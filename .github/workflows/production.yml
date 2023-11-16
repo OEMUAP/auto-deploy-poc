@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build_and_run_project_1:
@@ -16,6 +13,17 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+
+    - name: Check running containers on port
+      run: |
+        $CONTAINER_ID = docker ps -q --filter "publish=5001"
+        if ($CONTAINER_ID) {
+          Write-Output "Found container running on port 5001 with ID: $CONTAINER_ID"
+          docker stop $CONTAINER_ID
+        }
+        else {
+          Write-Output "No container found running on port 5001"
+        }
 
     - name: Build and run Docker for Project 1
       run: |
@@ -30,6 +38,17 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+
+    - name: Check running containers on port
+      run: |
+        $CONTAINER_ID = docker ps -q --filter "publish=4001"
+        if ($CONTAINER_ID) {
+          Write-Output "Found container running on port 4001 with ID: $CONTAINER_ID"
+          docker stop $CONTAINER_ID
+        }
+        else {
+          Write-Output "No container found running on port 4001"
+        }
 
     - name: Build and run Docker for Project 2
       run: |

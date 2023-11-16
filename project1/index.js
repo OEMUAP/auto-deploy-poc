@@ -12,11 +12,11 @@ const packageDetail = {
   version: packageJson.version
 }
 let data = [
-  { id: 1, name: 'Item 1', ...packageDetail },
-  { id: 2, name: 'Item 2', ...packageDetail },
-  { id: 3, name: 'Item 3', ...packageDetail },
-  { id: 4, name: 'Item 4', ...packageDetail },
-  { id: 5, name: 'Item 5', ...packageDetail },
+  { id: 1, name: 'Item 1', test: 'test-1',...packageDetail },
+  { id: 2, name: 'Item 2', test: 'test-1',...packageDetail },
+  { id: 3, name: 'Item 3', test: 'test-1',...packageDetail },
+  { id: 4, name: 'Item 4', test: 'test-1',...packageDetail },
+  { id: 5, name: 'Item 5', test: 'test-1',...packageDetail },
 ];
 
 // Get all items

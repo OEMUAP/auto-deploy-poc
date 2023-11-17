@@ -2,8 +2,11 @@ name: Build and Deploy container manually
 
 on:
   workflow_dispatch:
-    branches:
-      - dev-test
+    inputs:
+      branch:
+        description: 'Branch to deploy'
+        required: true
+        default: 'dev'
 #   push:
 #     branches:
 #       - dev-test

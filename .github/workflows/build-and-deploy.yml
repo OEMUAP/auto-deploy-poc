@@ -1,6 +1,9 @@
 name: Build and Deploy to Local Registry
 
 on:
+  push:
+    branches:
+      - dev-test
   workflow_dispatch:
     branches:
       - dev-test

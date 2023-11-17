@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - dev
+  worlflow_dispatch:
 
 jobs:
   build_and_run_project_1:

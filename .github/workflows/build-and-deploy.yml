@@ -1,6 +1,9 @@
 name: Build and Deploy container manually
 
-# on:
+on:
+  workflow_dispatch:
+    branches:
+      - dev-test
 #   push:
 #     branches:
 #       - dev-test

@@ -1,18 +1,12 @@
 name: Build and Deploy to Local Registry
 
 on:
-  push:
-    branches:
-      - dev-test
   workflow_dispatch:
-    branches:
-      - dev-test
 
 jobs:
   build_and_run_project_1:
     name: Build and Run Project 1
     runs-on: self-hosted
-    if: github.event_name == 'workflow_dispatch'
 
     steps:
     - name: Checkout repository
@@ -38,28 +32,3 @@ jobs:
       run: |
         cd project1
         docker run -dp 5006:5001 --name dev-release-project-1 nodejs-crud-dev-release-project-1
-
-  # build_and_run_project_2:
-  #   name: Build and Run Project 2
-  #   runs-on: self-hosted
-
-  #   steps:
-  #   - name: Checkout repository
-  #     uses: actions/checkout@v2
-
-  #   - name: Check running containers on port
-  #     run: |
-  #       $CONTAINER_ID = docker ps -q --filter "publish=4006"
-  #       if ($CONTAINER_ID) {
-  #         Write-Output "Found container running on port 4006 with ID: $CONTAINER_ID"
-  #         docker rm -f $CONTAINER_ID
-  #       }
-  #       else {
-  #         Write-Output "No container found running on port 4006"
-  #       }
-
-  #   - name: Build and run Docker for Project 2
-  #     run: |
-  #       cd project2
-  #       docker build -t nodejs-crud-dev-release-project-2 .
-  #       docker run -dp 4006:4001 --name dev-release-project-2 nodejs-crud-dev-release-project-2

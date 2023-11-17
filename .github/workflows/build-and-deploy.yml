@@ -1,12 +1,12 @@
-name: Build and Deploy to Local Registry
+name: Build and Deploy container manually
 
-on:
-  push:
-    branches:
-      - dev-test
-  workflow_dispatch:
-    branches:
-      - dev-test
+# on:
+#   push:
+#     branches:
+#       - dev-test
+#   workflow_dispatch:
+#     branches:
+#       - dev-test
 
 jobs:
   build_and_run_project_1:

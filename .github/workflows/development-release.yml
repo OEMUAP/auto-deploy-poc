@@ -9,6 +9,7 @@ jobs:
   build_and_run_project_1:
     name: Build and Run Project 1
     runs-on: self-hosted
+    if: github.event_name == 'workflow_dispatch'
 
     steps:
     - name: Checkout repository
@@ -25,20 +26,15 @@ jobs:
           Write-Output "No container found running on port 5006"
         }
 
-    - name: Build and run Docker for Project 1
+    - name: Build Docker for Project 1
       run: |
         cd project1
         docker build -t nodejs-crud-dev-release-project-1 .
-        # docker run -dp 5006:5001 --name dev-release-project-1 nodejs-crud-dev-release-project-1
 
-  run-container:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch'
-
-    steps:
-    - name: Run Docker container
-      run: docker run -dp 5006:5001 --name dev-release-project-1 nodejs-crud-dev-release-project-1
+    - name: Run Docker for Project 1
+      run: |
+        cd project1
+        docker run -dp 5006:5001 --name dev-release-project-1 nodejs-crud-dev-release-project-1
 
   # build_and_run_project_2:
   #   name: Build and Run Project 2

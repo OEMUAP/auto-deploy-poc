@@ -1,9 +1,7 @@
 name: Manual-Actions-Workflow-production-release
 
 on:
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch
 
 jobs:
   build_and_run_project_1:

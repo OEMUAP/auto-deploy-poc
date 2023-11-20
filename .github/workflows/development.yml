@@ -1,7 +1,9 @@
 name: Build and Deploy development
 
 on:
-  workflow_dispatch
+  push:
+    branches:
+      - dev
 
 jobs:
   build_and_run_project_1:

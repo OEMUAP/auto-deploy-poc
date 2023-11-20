@@ -1,9 +1,7 @@
 name: Build and Deploy to Local Registry
 
 on:
-  pull_request:
-    branches:
-      - dev
+  workflow_dispatch
 
 jobs:
   build_and_run_project_1:

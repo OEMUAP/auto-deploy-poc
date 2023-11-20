@@ -1,9 +1,7 @@
-name: Build and Deploy to Local Registry
+name: Manual-Actions-Workflow
 
 on:
-  push:
-    branches:
-      - dev
+  workflow_dispatch
 
 jobs:
   build_and_run_project_1:

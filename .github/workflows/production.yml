@@ -30,8 +30,9 @@ jobs:
       run: |
         docker login --username vishalkumar-activelabs --password ${{ secrets.DOCKER_REGISTRY_TOKEN }} ghcr.io
         cd project1
-        docker build -t nodejs-crud-prod-project-1 .
-        docker run -dp 5001:5001 --name prod-project-1 nodejs-crud-prod-project-1
+        docker build -t ghcr.io/vishalkumar-activelabs/nodejs-crud-prod-project-1 .
+        docker push ghcr.io/vishalkumar-activelabs/nodejs-crud-prod-project-1
+        # docker run -dp 5001:5001 --name prod-project-1 nodejs-crud-prod-project-1
 
   build_and_run_project_2:
     name: Build and Run Project 2
@@ -57,5 +58,6 @@ jobs:
       run: |
         docker login --username vishalkumar-activelabs --password ${{ secrets.DOCKER_REGISTRY_TOKEN }} ghcr.io
         cd project2
-        docker build -t nodejs-crud-prod-project-2 .
-        docker run -dp 4001:4001 --name prod-project-2 nodejs-crud-prod-project-2
+        docker build -t ghcr.io/vishalkumar-activelabs/nodejs-crud-prod-project-2 .
+        docker push ghcr.io/vishalkumar-activelabs/nodejs-crud-prod-project-2
+        # docker run -dp 4001:4001 --name prod-project-2 nodejs-crud-prod-project-2

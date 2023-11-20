@@ -1,4 +1,4 @@
-name: Build and Deploy to Local Registry
+name: Build and Deploy production
 
 on:
   push:

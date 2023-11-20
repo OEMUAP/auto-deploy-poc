@@ -1,4 +1,4 @@
-name: Build and Deploy to Local Registry
+name: Manual-Actions-Workflow-stagging-release
 
 on:
   pull_request:

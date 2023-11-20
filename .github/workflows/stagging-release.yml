@@ -1,9 +1,7 @@
 name: Manual-Actions-Workflow-stagging-release
 
 on:
-  pull_request:
-    branches:
-      - stag
+  workflow_dispatch
 
 jobs:
   build_and_run_project_1:

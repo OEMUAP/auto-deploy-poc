@@ -1,4 +1,4 @@
-name: Build and Deploy production release
+name: Build and Deploy development
 
 on:
   workflow_dispatch

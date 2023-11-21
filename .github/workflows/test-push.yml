@@ -1,0 +1,23 @@
+name: Docker Image Push
+
+on:
+  push:
+    branches:
+      - test
+
+jobs:
+  build-and-push-image:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: docker build -t localhost:5000/my-image-name:latest .
+
+      - name: Login to Docker registry
+        run: docker login -u your_username -p your_password localhost:5000
+
+      - name: Push image to local registry
+        run: docker push localhost:5000/my-image-name:latest

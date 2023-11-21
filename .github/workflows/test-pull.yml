@@ -1,0 +1,20 @@
+name: Docker Image Pull
+
+on:
+  pull_request:
+    branches:
+      - test
+
+jobs:
+  pull-image:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Docker registry
+        run: docker login -u your_username -p your_password localhost:5000
+
+      - name: Pull image from local registry
+        run: docker pull localhost:5000/my-image-name:latest

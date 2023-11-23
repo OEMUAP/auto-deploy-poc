@@ -68,24 +68,27 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Get Package Version
+      - name: Get Package Version for project1
         id: get-version-1
+        shell: powershell
         run: |
           cd project1
           $Version1 = (Get-Content package.json | ConvertFrom-Json).version
           Write-Host "The package version is $Version1"
+          echo "##vso[task.setvariable variable=PACKAGE_VERSION_1;isOutput=true]$Version1"
           
-      - name: Use Package Version
+      - name: Use Package Version for project1
+        shell: powershell
         run: |
-          echo "The package version is $Version1"
+          echo "The package version for project1 is $env:PACKAGE_VERSION_1"
 
-      - name: Get Package Version
+      - name: Get Package Version for project2
         id: get-version-2
         run: |
           cd project2
           $Version2 = (Get-Content package.json | ConvertFrom-Json).version
           Write-Host "The package version is $Version2"
           
-      - name: Use Package Version
+      - name: Use Package Version for project2
         run: |
           echo "The package version is $Version2"

@@ -1,5 +1,11 @@
 # nodejs-crud-project-1
 
+## 3.1.1
+
+### Patch Changes
+
+- b6cd425: update in res
+
 ## 3.1.0
 
 ### Minor Changes

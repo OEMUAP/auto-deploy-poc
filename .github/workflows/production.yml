@@ -69,11 +69,23 @@ jobs:
           node-version: '14'
 
       - name: Get Package Version
-        id: get-version
+        id: get-version-1
         run: |
-          $Version = (Get-Content package.json | ConvertFrom-Json).version
-          Write-Host "The package version is $Version"
+          cd project1
+          $Version1 = (Get-Content package.json | ConvertFrom-Json).version
+          Write-Host "The package version is $Version1"
           
       - name: Use Package Version
         run: |
-          echo "The package version is ${{ steps.get-version.outputs.package_version }}"
+          echo "The package version is $Version1"
+
+      - name: Get Package Version
+        id: get-version-2
+        run: |
+          cd project2
+          $Version2 = (Get-Content package.json | ConvertFrom-Json).version
+          Write-Host "The package version is $Version2"
+          
+      - name: Use Package Version
+        run: |
+          echo "The package version is $Version2"

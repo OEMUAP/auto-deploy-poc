@@ -7,9 +7,6 @@ storage:
     rootdirectory: /var/lib/registry
 http:
   addr: :5000
-  tls:
-    certificate: /certs/domain.crt
-    key: /certs/domain.key
 auth:
   htpasswd:
     realm: basic-realm

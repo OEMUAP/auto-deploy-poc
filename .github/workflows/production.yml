@@ -73,12 +73,6 @@ jobs:
         run: |
           $Version = (Get-Content package.json | ConvertFrom-Json).version
           Write-Host "The package version is $Version"
-     
-      - name: Get Package Version
-        id: get-version
-        run: |
-          VERSION=$(jq -r '.version' package.json)
-          echo "::set-output name=package_version::$VERSION"
           
       - name: Use Package Version
         run: |

@@ -1,5 +1,11 @@
 # nodejs-crud-project-1
 
+## 3.1.3
+
+### Patch Changes
+
+- 7176cfe: update data response
+
 ## 3.1.2
 
 ### Patch Changes

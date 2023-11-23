@@ -19,6 +19,7 @@ let data = [
   { id: 5, name: 'Item 5', test: 'test-1',...packageDetail },
   { id: 6, name: 'Item 6', test: 'test-1',...packageDetail },
   { id: 7, name: 'Item 7', test: 'test-1',...packageDetail },
+  { id: 8, name: 'Item 8', test: 'test-1',...packageDetail },
 ];
 
 // Get all items

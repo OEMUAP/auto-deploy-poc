@@ -28,8 +28,9 @@ jobs:
     - name: Build and run Docker for Project 1
       run: |
         cd project1
-        docker build -t nodejs-crud-stag-project-1 .
-        docker run -dp 5003:5001 --name stag-project-1 nodejs-crud-stag-project-1
+        $project1Version = (Get-Content package.json | ConvertFrom-Json).version
+        docker build -t nodejs-crud-stag-project-1:stag-$project1Version .
+        docker run -dp 5003:5001 --name stag-project-1 nodejs-crud-stag-project-1:stag-$project1Version
 
   build_and_run_project_2:
     name: Build and Run Project 2
@@ -53,5 +54,6 @@ jobs:
     - name: Build and run Docker for Project 2
       run: |
         cd project2
-        docker build -t nodejs-crud-stag-project-2 .
-        docker run -dp 4003:4001 --name stag-project-2 nodejs-crud-stag-project-2
+        $project2Version = (Get-Content package.json | ConvertFrom-Json).version
+        docker build -t nodejs-crud-stag-project-2:stag-$project2Version .
+        docker run -dp 4003:4001 --name stag-project-2 nodejs-crud-stag-project-2:stag-$project2Version

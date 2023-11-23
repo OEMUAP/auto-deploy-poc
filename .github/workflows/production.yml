@@ -68,10 +68,11 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install jq
+      - name: Get Package Version
+        id: get-version
         run: |
-          sudo apt-get update
-          sudo apt-get install jq
+          $Version = (Get-Content package.json | ConvertFrom-Json).version
+          Write-Host "The package version is $Version"
      
       - name: Get Package Version
         id: get-version

@@ -13,13 +13,7 @@ const packageDetail = {
 }
 let data = [
   { id: 1, name: 'Item 1', test: 'test-1',...packageDetail },
-  { id: 2, name: 'Item 2', test: 'test-1',...packageDetail },
-  { id: 3, name: 'Item 3', test: 'test-1',...packageDetail },
-  { id: 4, name: 'Item 4', test: 'test-1',...packageDetail },
-  { id: 5, name: 'Item 5', test: 'test-1',...packageDetail },
-  { id: 6, name: 'Item 6', test: 'test-1',...packageDetail },
-  { id: 7, name: 'Item 7', test: 'test-1',...packageDetail },
-  { id: 8, name: 'Item 8', test: 'test-1',...packageDetail },
+  { id: 2, name: 'Item 2', test: 'test-1',...packageDetail }
 ];
 
 // Get all items

@@ -29,7 +29,7 @@ jobs:
       run: |
         cd project1
         $project1Version = (Get-Content package.json | ConvertFrom-Json).version
-        docker build -t nodejs-crud-prod-project-1::prod-$project1Version .
+        docker build -t nodejs-crud-prod-project-1:prod-$project1Version .
         docker run -dp 5001:5001 --name prod-project-1 nodejs-crud-prod-project-1::prod-$project1Version
 
   build_and_run_project_2:
@@ -57,40 +57,3 @@ jobs:
         $project2Version = (Get-Content package.json | ConvertFrom-Json).version
         docker build -t nodejs-crud-prod-project-2:prod-$project2Version .
         docker run -dp 4001:4001 --name prod-project-2 nodejs-crud-prod-project-2:prod-$project2Version
-  
-  # get-package-version:
-  #   runs-on: self-hosted
-    
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
-        
-  #     - name: Set up Node.js
-  #       uses: actions/setup-node@v2
-  #       with:
-  #         node-version: '14'
-
-  #     - name: Get Package Version for project1
-  #       id: get-version-1
-  #       shell: powershell
-  #       run: |
-  #         cd project1
-  #         $Version1 = (Get-Content package.json | ConvertFrom-Json).version
-  #         Write-Host "The package version is $Version1"
-  #         echo "##vso[task.setvariable variable=PACKAGE_VERSION_1;isOutput=true]$Version1"
-          
-  #     - name: Use Package Version for project1
-  #       shell: powershell
-  #       run: |
-  #         echo "The package version for project1 is $env:PACKAGE_VERSION_1"
-
-  #     - name: Get Package Version for project2
-  #       id: get-version-2
-  #       run: |
-  #         cd project2
-  #         $Version2 = (Get-Content package.json | ConvertFrom-Json).version
-  #         Write-Host "The package version is $Version2"
-          
-  #     - name: Use Package Version for project2
-  #       run: |
-  #         echo "The package version is $Version2"

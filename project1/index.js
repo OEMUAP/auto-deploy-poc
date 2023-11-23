@@ -14,6 +14,7 @@ const packageDetail = {
 let data = [
   { id: 1, name: 'Item 1', test: 'test-1',...packageDetail },
   { id: 2, name: 'Item 2', test: 'test-1',...packageDetail },
+  { id: 3, name: 'Item 3', test: 'test-1',...packageDetail },
 ];
 
 // Get all items

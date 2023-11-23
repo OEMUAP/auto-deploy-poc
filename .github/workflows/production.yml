@@ -30,7 +30,7 @@ jobs:
         cd project1
         $project1Version = (Get-Content package.json | ConvertFrom-Json).version
         docker build -t nodejs-crud-prod-project-1:prod-$project1Version .
-        docker run -dp 5001:5001 --name prod-project-1 nodejs-crud-prod-project-1::prod-$project1Version
+        docker run -dp 5001:5001 --name prod-project-1 nodejs-crud-prod-project-1:prod-$project1Version
 
   build_and_run_project_2:
     name: Build and Run Project 2

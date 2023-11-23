@@ -55,3 +55,25 @@ jobs:
         cd project2
         docker build -t nodejs-crud-prod-project-2 .
         docker run -dp 4001:4001 --name prod-project-2 nodejs-crud-prod-project-2
+  
+  get-package-version:
+    runs-on: self-hosted
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          
+      - name: Get Package Version
+        id: get-version
+        run: |
+          VERSION=$(jq -r '.version' package.json)
+          echo "::set-output name=package_version::$VERSION"
+          
+      - name: Use Package Version
+        run: |
+          echo "The package version is ${{ steps.get-version.outputs.package_version }}"

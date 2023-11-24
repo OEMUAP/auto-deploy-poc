@@ -27,7 +27,7 @@ jobs:
 
     - name: Build and run Docker for Project 1
       run: |
-        docker login --username vishalkumar-activelabs --password ${{ secrets.DOCKER_REGISTRY_TOKEN }} https://t7zz2z6j-5000.inc1.devtunnels.ms
+        docker login --username ${{ secrets.REGISTRY_USERNAME }} --password ${{ secrets.REGISTRY_PASSWORD }} https://t7zz2z6j-5000.inc1.devtunnels.ms
         cd project1
         $project1Version = (Get-Content package.json | ConvertFrom-Json).version
         docker build -t nodejs-crud-prod-project-1:prod-$project1Version .

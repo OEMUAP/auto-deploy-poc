@@ -16,7 +16,6 @@ jobs:
 
     - name: Check running containers on port
       run: |
-        docker login --username vishalkumar-activelabs --password ${{ secrets.DOCKER_REGISTRY_TOKEN }} ghcr.io
         $CONTAINER_ID = docker ps -q --filter "publish=5001"
         if ($CONTAINER_ID) {
           Write-Output "Found container running on port 5001 with ID: $CONTAINER_ID"
@@ -33,6 +32,8 @@ jobs:
         $project1Version = (Get-Content package.json | ConvertFrom-Json).version
         docker build -t nodejs-crud-prod-project-1:prod-$project1Version .
         docker run -dp 5001:5001 --name prod-project-1 nodejs-crud-prod-project-1:prod-$project1Version
+        docker build -t ghcr.io/vishalkumar-activelabs/nodejs-crud-prod-project-1:prod-$project1Version .
+        docker push ghcr.io/vishalkumar-activelabs/nodejs-crud-prod-project-1:prod-$project1Version
 
   build_and_run_project_2:
     name: Build and Run Project 2
@@ -44,7 +45,6 @@ jobs:
 
     - name: Check running containers on port
       run: |
-        docker login --username vishalkumar-activelabs --password ${{ secrets.DOCKER_REGISTRY_TOKEN }} ghcr.io
         $CONTAINER_ID = docker ps -q --filter "publish=4001"
         if ($CONTAINER_ID) {
           Write-Output "Found container running on port 4001 with ID: $CONTAINER_ID"
@@ -61,3 +61,5 @@ jobs:
         $project2Version = (Get-Content package.json | ConvertFrom-Json).version
         docker build -t nodejs-crud-prod-project-2:prod-$project2Version .
         docker run -dp 4001:4001 --name prod-project-2 nodejs-crud-prod-project-2:prod-$project2Version
+        docker build -t ghcr.io/vishalkumar-activelabs/nodejs-crud-prod-project-2:prod-$project2Version .
+        docker push ghcr.io/vishalkumar-activelabs/nodejs-crud-prod-project-2:prod-$project2Version

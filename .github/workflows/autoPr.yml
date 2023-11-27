@@ -20,10 +20,6 @@ jobs:
         $COMMIT_AUTHOR = git log -1 --pretty=format:'%an'
         Write-Host "GIT_COMMIT_AUTHOR_NAME=$COMMIT_AUTHOR" >> $env:GITHUB_ENV
 
-    - name: Debug Commit Author Name
-      run: |
-        echo "Commit Author: ${{ env.GIT_COMMIT_AUTHOR_NAME }}"
-
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:

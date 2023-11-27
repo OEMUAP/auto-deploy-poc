@@ -17,8 +17,8 @@ jobs:
     - name: Set commit author name as an environment variable
       id: commit_info
       run: |
-        COMMIT_AUTHOR=$(git log -1 --pretty=format:'%an')
-        echo "GIT_COMMIT_AUTHOR_NAME=$COMMIT_AUTHOR" >> $GITHUB_ENV
+        $COMMIT_AUTHOR = git log -1 --pretty=format:'%an'
+        Write-Host "GIT_COMMIT_AUTHOR_NAME=$COMMIT_AUTHOR" >> $env:GITHUB_ENV
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3

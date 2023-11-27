@@ -17,7 +17,7 @@ jobs:
     # Modify files in auto-pr-branch
     - name: Make changes in auto-pr-branch
       run: |
-        git checkout -b auto-pr-branch origin/auto-pr-branch
+        git checkout -b auto-pr-branch
         # Make changes to files
         echo "Updated content" >> example.txt
         git add example.txt

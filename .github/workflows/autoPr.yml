@@ -24,7 +24,8 @@ jobs:
       uses: peter-evans/create-pull-request@v3
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: main
+        branch: "auto-pr-branch"
+        base: "main"
         title: Automatic PR from main
         body: |
           This is an automatic PR created from changes in the main branch by ${{ env.GIT_COMMIT_AUTHOR_NAME }}.

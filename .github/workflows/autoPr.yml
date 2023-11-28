@@ -13,15 +13,21 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    
+    - name: Write to File
+      run: |
+        git checkout -b auto-pr-branch
+        echo "Hello, GitHub Actions!" > output.txt
+        # Add more content if needed using echo or other commands
+
 
     # Modify files in auto-pr-branch
     - name: Make changes in auto-pr-branch
       run: |
-        git checkout -b auto-pr-branch
-        # Make changes to files
-        echo "Updated content" >> example.txt
-        git add example.txt
-        git commit -m "Update example.txt"
+        git config --local user.email "vishal.kumar@cloudactivelabs.com"
+        git config --local user.name "vishalkumar-activelabs"
+        git add output.txt
+        git commit -m "Update output.txt"
         git push origin auto-pr-branch
 
     - name: Set commit author name as an environment variable
@@ -38,5 +44,5 @@ jobs:
         base: "main"
         title: Automatic PR from main
         body: |
-          This is an automatic PR created from changes in the main branch by ${{ env.GIT_COMMIT_AUTHOR_NAME }}.
+          This is an automatic PR created from changes in the main branch.
           # Additional options can be specified here, like reviewers, labels, etc.

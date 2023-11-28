@@ -24,10 +24,8 @@ jobs:
     # Modify files in auto-pr-branch
     - name: Make changes in auto-pr-branch
       run: |
-        git config --local user.email "vishal.kumar@cloudactivelabs.com"
-        git config --local user.name "vishalkumar-activelabs"
         git add output.txt
-        git commit -m "Update output.txt"
+        git commit -m "Update-9 output.txt"
         git push origin auto-pr-branch
 
     - name: Set commit author name as an environment variable

@@ -13,31 +13,18 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
-    - name: Set commit author name as an environment variable
-      id: commit_info
-      run: |
-        $COMMIT_AUTHOR = git log -1 --pretty=format:'%an'
-        Write-Host "GIT_COMMIT_AUTHOR_NAME=$COMMIT_AUTHOR" >> $env:GITHUB_ENV
-      
-    - name: Write to File
-      run: |
-        git config user.email "vishal.kumar@cloudactivelabs.com"
-        git config user.name "vishalkumar-activelabs"
-        git checkout -b auto-pr-branch
-        echo "Hello, GitHub Actions!" > output.txt
-        git add output.txt
-        git commit -m "Update fix-12 output.txt"
-        git push auto-pr-branch
-
-
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
       with:
-        token: ${{ secrets.COMMIT_TOKEN }}
-        branch: "auto-pr-branch"
-        base: "main"
-        title: Automatic PR from main
-        body: |
-          This is an automatic PR created from changes in the main branch.
-          # Additional options can be specified here, like reviewers, labels, etc.
+        ref: main
+
+    - name: make changes to file
+      run: |
+        echo "Hello, GitHub Actions!" > hello.txt
+      
+    - name: commit and push changes
+      run: |
+        git config --global user.email "vishal.kumar@cloudactivelabs.com"
+        git config --global user.name "vishalkumar-activelabs"
+        git add -A
+        git commit -m "update from github actions"
+        git push
+

@@ -32,4 +32,7 @@ jobs:
         repository: .
         branch: "feature/test-1"
         create_branch: true
+        commit_author: vishalkumar-activelabs <vishal.kumar@cloudactivelabs.com>
+        commit_user_email: vishal.kumar@cloudactivelabs.com
+        commit_user_name: vishalkumar-activelabs
 

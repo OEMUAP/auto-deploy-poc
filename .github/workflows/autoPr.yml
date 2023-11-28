@@ -17,22 +17,18 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@main
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
 
 
     - name: make changes to file
       run: |
         echo "Hello, GitHub Actions!" > hello.txt
       
-    - name: Commit all changed files back to the repository
-      uses: stefanzweifel/git-auto-commit-action@v5
+    - name: Commit & Push changes
+      uses: actions-js/push@main
       with:
-        commit_message: "Update hello.txt"
-        commit_options: "--no-verify --signoff"
-        repository: .
-        branch: "feature/test-1"
-        create_branch: true
-        commit_author: vishalkumar-activelabs <vishal.kumar@cloudactivelabs.com>
-        commit_user_email: vishal.kumar@cloudactivelabs.com
-        commit_user_name: vishalkumar-activelabs
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 

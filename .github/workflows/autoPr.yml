@@ -27,8 +27,8 @@ jobs:
         git checkout -b auto-pr-branch
         echo "Hello, GitHub Actions!" > output.txt
         git add output.txt
-        git commit -m "Update fix-10 output.txt"
-        git push origin auto-pr-branch
+        git commit -m "Update fix-12 output.txt"
+        git push auto-pr-branch
 
 
     - name: Create Pull Request
